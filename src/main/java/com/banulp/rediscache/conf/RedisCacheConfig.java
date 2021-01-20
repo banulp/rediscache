@@ -13,6 +13,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 //import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.RedisStaticMasterReplicaConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
@@ -36,9 +37,15 @@ public class RedisCacheConfig {
 //        RedisStandaloneConfiguration redisConf = new RedisStandaloneConfiguration();
 //        redisConf.setHostName("localhost");
 //        redisConf.setPort(6379);
-
+        
         RedisClusterConfiguration redisConf = new RedisClusterConfiguration(clusterProperties.getNodes());
+        
+        // pool 설정하는거 있나본데 찾아서 넣고 확인하기
+        //JedisConnectionFactory jcf = new JedisConnectionFactory(redisConf);
+        //JedisClientConfiguration jcc = new JedisClientConfiguration();
+
         return new JedisConnectionFactory(redisConf);
+
     }
 
     @Bean
