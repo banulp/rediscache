@@ -1,24 +1,24 @@
 server:
   port: 8080
 spring:
-  cache:
-    type: redis
   datasource:
     driverClassName: org.h2.Driver
-    password: password
+    password:
     url: jdbc:h2:mem:testdb
     username: sa
+  cache:
+    type: redis
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
   redis:
-#    host: localhost
-#    port: 6379
-    cluster:
-      nodes:
-        - xxx.xx.xxx.xxx:30001
-        - xxx.xx.xxx.xxx:30002
-        - xxx.xx.xxx.xxx:30001
-        - xxx.xx.xxx.xxx:30002
-        - xxx.xx.xxx.xxx:30001
-        - xxx.xx.xxx.xxx:30002
-      max-redirects: 3
+    host: localhost
+    port: 6379
+#    cluster:
+#      nodes:
+#        - xxx.xx.xxx.xxx:30001
+#        - xxx.xx.xxx.xxx:30002
+#        - xxx.xx.xxx.xxx:30001
+#        - xxx.xx.xxx.xxx:30002
+#        - xxx.xx.xxx.xxx:30001
+#        - xxx.xx.xxx.xxx:30002
+#      max-redirects: 3

@@ -5,9 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.StringVendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Arrays;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
@@ -31,11 +34,21 @@ public class SwaggerConfig {
                 "Spring Boot redis as cache",
                 "1.0",
                 "learning",
-                new Contact("banulp", "",
-                        ""),
+                new Contact("banulp", "",""),
                 "",
                 ""
         );
+
+//        ApiInfo apiInfo = new ApiInfo(
+//                "Spring Boot Redis banulp Example API",
+//                "Spring Boot redis as cache",
+//                "1.0",
+//                "learning",
+//                new Contact("banulp", "",""),
+//                "",
+//                "",
+//                Arrays.asList(new StringVendorExtension("banulpVname", "banulpVvalue"))
+//        );
 
         return apiInfo;
     }

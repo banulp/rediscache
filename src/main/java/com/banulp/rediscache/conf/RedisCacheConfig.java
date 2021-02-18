@@ -34,11 +34,11 @@ public class RedisCacheConfig {
     public JedisConnectionFactory redisConnectionFactory() {
         log.info("Redis (/Lettuce) configuration enabled.");
 
-//        RedisStandaloneConfiguration redisConf = new RedisStandaloneConfiguration();
-//        redisConf.setHostName("localhost");
-//        redisConf.setPort(6379);
+        RedisStandaloneConfiguration redisConf = new RedisStandaloneConfiguration();
+        redisConf.setHostName("localhost");
+        redisConf.setPort(6379);
         
-        RedisClusterConfiguration redisConf = new RedisClusterConfiguration(clusterProperties.getNodes());
+//        RedisClusterConfiguration redisConf = new RedisClusterConfiguration(clusterProperties.getNodes());
         
         // pool 설정하는거 있나본데 찾아서 넣고 확인하기
         //JedisConnectionFactory jcf = new JedisConnectionFactory(redisConf);
