@@ -2,6 +2,7 @@ package com.banulp.rediscache.conf;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,23 +31,24 @@ public class RedisCacheConfig {
     private RedisClusterConfigurationProperties clusterProperties;
 
 
-    @Bean
-    public JedisConnectionFactory redisConnectionFactory() {
-        log.info("Redis (/Lettuce) configuration enabled.");
-
-        RedisStandaloneConfiguration redisConf = new RedisStandaloneConfiguration();
-        redisConf.setHostName("localhost");
-        redisConf.setPort(6379);
-        
-//        RedisClusterConfiguration redisConf = new RedisClusterConfiguration(clusterProperties.getNodes());
-        
-        // pool 설정하는거 있나본데 찾아서 넣고 확인하기
-        //JedisConnectionFactory jcf = new JedisConnectionFactory(redisConf);
-        //JedisClientConfiguration jcc = new JedisClientConfiguration();
-
-        return new JedisConnectionFactory(redisConf);
-
-    }
+//    @Bean
+//    public JedisConnectionFactory redisConnectionFactory() {
+//        log.info("Redis (/Lettuce) configuration enabled.");
+//
+//        RedisStandaloneConfiguration redisConf = new RedisStandaloneConfiguration();
+////        redisConf.setHostName("localhost");
+//        redisConf.setHostName("172.19.170.60");
+//        redisConf.setPort(6379);
+//
+////        RedisClusterConfiguration redisConf = new RedisClusterConfiguration(clusterProperties.getNodes());
+//
+//        // pool 설정하는거 있나본데 찾아서 넣고 확인하기
+//        //JedisConnectionFactory jcf = new JedisConnectionFactory(redisConf);
+//        //JedisClientConfiguration jcc = new JedisClientConfiguration();
+//
+//        return new JedisConnectionFactory(redisConf);
+//
+//    }
 
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
