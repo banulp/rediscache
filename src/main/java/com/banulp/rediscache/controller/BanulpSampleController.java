@@ -14,8 +14,6 @@ public class BanulpSampleController {
 
     @GetMapping("/gamedata.h3/friend_info")
     public String add() {
-//        return "{\"friend_member\":\"\"}\n";
-//        return "{\"friend_member\":[{\"fav_team_id\":\"18\",\"team_lv\":\"39\",\"team_name\":\"옥희호랑이\"}]} ";
         return "{\"friend_member\":[]} ";
     }
 

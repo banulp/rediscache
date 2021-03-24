@@ -11,8 +11,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
   redis:
-    host: localhost
-    port: 6379
+### standalone
+#    host: 172.19.170.67
+#    port: 6379
+### cluster
 #    cluster:
 #      nodes:
 #        - xxx.xx.xxx.xxx:30001
@@ -22,3 +24,12 @@ spring:
 #        - xxx.xx.xxx.xxx:30001
 #        - xxx.xx.xxx.xxx:30002
 #      max-redirects: 3
+    port: 6379
+#    password: 123pwd
+    sentinel:
+      master: mymaster
+      nodes:
+        - 172.19.170.60:26379
+        - 172.19.170.61:26379
+        - 172.19.170.67:26379
+    database: 1

@@ -1,21 +1,14 @@
 package com.banulp.rediscache.conf;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.CacheKeyPrefix;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.connection.RedisClusterConfiguration;
+
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-//import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.connection.RedisStaticMasterReplicaConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 
@@ -27,8 +20,8 @@ import java.util.HashMap;
 @Slf4j
 public class RedisCacheConfig {
 
-    @Autowired
-    private RedisClusterConfigurationProperties clusterProperties;
+//    @Autowired
+//    private RedisClusterConfigurationProperties clusterProperties;
 
 
 //    @Bean
@@ -53,9 +46,10 @@ public class RedisCacheConfig {
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 
-        RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig().disableCachingNullValues()
+        RedisCacheConfiguration configuration = RedisCacheConfiguration.defaultCacheConfig()
+                .disableCachingNullValues()
                 .computePrefixWith(CacheKeyPrefix.simple())
-                .entryTtl(Duration.ofMillis(100000))
+                .entryTtl(Duration.ofSeconds(60))
                 .serializeValuesWith(
                         RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 

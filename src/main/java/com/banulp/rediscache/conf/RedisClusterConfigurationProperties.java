@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-@Configuration
-@ConfigurationProperties(prefix = "spring.redis.cluster")
+//@Configuration
+//@ConfigurationProperties(prefix = "spring.redis.cluster")
 public class RedisClusterConfigurationProperties {
 
     /**

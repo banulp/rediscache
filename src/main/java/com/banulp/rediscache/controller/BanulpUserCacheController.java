@@ -24,4 +24,10 @@ public class BanulpUserCacheController {
     public void evict (@PathVariable String uid) {
         banulpUserService.evictByUid(uid);
     }
+
+    @PostMapping("/evictdb")
+    public void evictdb () {
+        banulpUserService.evictdb();
+    }
+
 }

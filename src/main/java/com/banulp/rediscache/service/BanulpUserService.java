@@ -21,4 +21,7 @@ public class BanulpUserService {
         log.info(uid+" is evicted.");
     }
 
+    @CacheEvict(cacheNames = "BNPTTCACHE", allEntries = true)
+    public void evictdb() {
+    }
 }
