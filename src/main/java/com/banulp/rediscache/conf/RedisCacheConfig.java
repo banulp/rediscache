@@ -1,6 +1,8 @@
 package com.banulp.rediscache.conf;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +18,8 @@ import java.time.Duration;
 import java.util.HashMap;
 
 @Configuration
+//@ConditionalOnProperty(name = "")
+@ConditionalOnExpression("'${spring.cache.type}' == 'redis'")
 @EnableCaching
 @Slf4j
 public class RedisCacheConfig {

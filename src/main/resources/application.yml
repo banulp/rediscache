@@ -8,6 +8,7 @@ spring:
     username: sa
   cache:
     type: redis
+#    type: "none"
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
   redis:
